@@ -1,0 +1,2343 @@
+Terminals unused in grammar
+
+   T_STRING
+   BIGER
+   MODASS
+   ADDADD
+   SUBSUB
+
+
+语法
+
+    0 $accept: program $end
+
+    1 program: T_VOID MAIN LBRACKET RBRACKET statements
+
+    2 statements: statement
+    3           | statements statement
+
+    4 statement: SEMICOLON
+    5          | declaration SEMICOLON
+    6          | LBRACE statements RBRACE
+    7          | LBRACE RBRACE
+    8          | WHILE LBRACKET expr RBRACKET statement
+    9          | IF LBRACKET expr RBRACKET statement
+   10          | ELSE LBRACKET expr RBRACKET statement
+   11          | FOR LBRACKET declaration SEMICOLON declaration SEMICOLON declaration RBRACKET statement
+
+   12 declaration: T IDENTIFIER ASSIGN expr
+   13            | T IDENTIFIER
+   14            | T IDENTIFIER COMMA IDENTIFIER
+   15            | SCANF LBRACKET expr COMMA expr RBRACKET
+   16            | PRINTF LBRACKET expr COMMA expr RBRACKET
+   17            | IDENTIFIER ASSIGN expr
+   18            | RETURN expr
+   19            | RETURN
+   20            | expr
+
+   21 expr: IDENTIFIER
+   22     | INTEGER
+   23     | CHAR
+   24     | STRING
+   25     | expr ADD expr
+   26     | expr SUB expr
+   27     | expr MUL expr
+   28     | expr DIV expr
+   29     | expr MOD expr
+   30     | expr ADDASS expr
+   31     | expr SUBASS expr
+   32     | expr MULASS expr
+   33     | expr DIVASS expr
+   34     | ADD expr
+   35     | SUB expr
+   36     | NOT expr
+   37     | SPACE expr
+   38     | expr AND expr
+   39     | expr OR expr
+   40     | expr BIGGER expr
+   41     | expr LESS expr
+   42     | expr BIGGEROREQUAL expr
+   43     | expr LESSOREQUAL expr
+   44     | expr EQUAL expr
+   45     | expr NOTEQUAL expr
+
+   46 T: T_INT
+   47  | T_CHAR
+   48  | T_BOOL
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+T_CHAR (258) 47
+T_INT (259) 46
+T_STRING (260)
+T_BOOL (261) 48
+IDENTIFIER (262) 12 13 14 17 21
+CHAR (263) 23
+STRING (264) 24
+INTEGER (265) 22
+WHILE (266) 8
+RETURN (267) 18 19
+IF (268) 9
+ELSE (269) 10
+FOR (270) 11
+MAIN (271) 1
+SCANF (272) 15
+PRINTF (273) 16
+T_VOID (274) 1
+BIGER (275)
+BIGGEROREQUAL (276) 42
+LESS (277) 41
+LESSOREQUAL (278) 43
+EQUAL (279) 44
+NOTEQUAL (280) 45
+ADD (281) 25 34
+SUB (282) 26 35
+MUL (283) 27
+DIV (284) 28
+MOD (285) 29
+ASSIGN (286) 12 17
+ADDASS (287) 30
+SUBASS (288) 31
+MULASS (289) 32
+DIVASS (290) 33
+MODASS (291)
+ADDADD (292)
+SUBSUB (293)
+SEMICOLON (294) 4 5 11
+LBRACE (295) 6 7
+RBRACE (296) 6 7
+LBRACKET (297) 1 8 9 10 11 15 16
+RBRACKET (298) 1 8 9 10 11 15 16
+COMMA (299) 14 15 16
+AND (300) 38
+OR (301) 39
+NOT (302) 36
+BIGGER (303) 40
+UMINUS (304)
+SPACE (305) 37
+
+
+Nonterminals, with rules where they appear
+
+$accept (51)
+    左： 0
+program (52)
+    左： 1, 右： 0
+statements (53)
+    左： 2 3, 右： 1 3 6
+statement (54)
+    左： 4 5 6 7 8 9 10 11, 右： 2 3 8 9 10 11
+declaration (55)
+    左： 12 13 14 15 16 17 18 19 20, 右： 5 11
+expr (56)
+    左： 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39
+    40 41 42 43 44 45, 右： 8 9 10 12 15 16 17 18 20 25 26 27 28
+    29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45
+T (57)
+    左： 46 47 48, 右： 12 13 14
+
+
+State 0
+
+    0 $accept: . program $end
+
+    T_VOID  shift, and go to state 1
+
+    program  转到状态 2
+
+
+State 1
+
+    1 program: T_VOID . MAIN LBRACKET RBRACKET statements
+
+    MAIN  shift, and go to state 3
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+State 3
+
+    1 program: T_VOID MAIN . LBRACKET RBRACKET statements
+
+    LBRACKET  shift, and go to state 5
+
+
+State 4
+
+    0 $accept: program $end .
+
+    $default  接受
+
+
+State 5
+
+    1 program: T_VOID MAIN LBRACKET . RBRACKET statements
+
+    RBRACKET  shift, and go to state 6
+
+
+State 6
+
+    1 program: T_VOID MAIN LBRACKET RBRACKET . statements
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statements   转到状态 27
+    statement    转到状态 28
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 7
+
+   47 T: T_CHAR .
+
+    $default  reduce using rule 47 (T)
+
+
+State 8
+
+   46 T: T_INT .
+
+    $default  reduce using rule 46 (T)
+
+
+State 9
+
+   48 T: T_BOOL .
+
+    $default  reduce using rule 48 (T)
+
+
+State 10
+
+   17 declaration: IDENTIFIER . ASSIGN expr
+   21 expr: IDENTIFIER .
+
+    ASSIGN  shift, and go to state 32
+
+    $default  reduce using rule 21 (expr)
+
+
+State 11
+
+   23 expr: CHAR .
+
+    $default  reduce using rule 23 (expr)
+
+
+State 12
+
+   24 expr: STRING .
+
+    $default  reduce using rule 24 (expr)
+
+
+State 13
+
+   22 expr: INTEGER .
+
+    $default  reduce using rule 22 (expr)
+
+
+State 14
+
+    8 statement: WHILE . LBRACKET expr RBRACKET statement
+
+    LBRACKET  shift, and go to state 33
+
+
+State 15
+
+   18 declaration: RETURN . expr
+   19            | RETURN .
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    $default  reduce using rule 19 (declaration)
+
+    expr  转到状态 35
+
+
+State 16
+
+    9 statement: IF . LBRACKET expr RBRACKET statement
+
+    LBRACKET  shift, and go to state 36
+
+
+State 17
+
+   10 statement: ELSE . LBRACKET expr RBRACKET statement
+
+    LBRACKET  shift, and go to state 37
+
+
+State 18
+
+   11 statement: FOR . LBRACKET declaration SEMICOLON declaration SEMICOLON declaration RBRACKET statement
+
+    LBRACKET  shift, and go to state 38
+
+
+State 19
+
+   15 declaration: SCANF . LBRACKET expr COMMA expr RBRACKET
+
+    LBRACKET  shift, and go to state 39
+
+
+State 20
+
+   16 declaration: PRINTF . LBRACKET expr COMMA expr RBRACKET
+
+    LBRACKET  shift, and go to state 40
+
+
+State 21
+
+   34 expr: ADD . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 41
+
+
+State 22
+
+   35 expr: SUB . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 42
+
+
+State 23
+
+    4 statement: SEMICOLON .
+
+    $default  reduce using rule 4 (statement)
+
+
+State 24
+
+    6 statement: LBRACE . statements RBRACE
+    7          | LBRACE . RBRACE
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    RBRACE      shift, and go to state 43
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statements   转到状态 44
+    statement    转到状态 28
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 25
+
+   36 expr: NOT . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 45
+
+
+State 26
+
+   37 expr: SPACE . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 46
+
+
+State 27
+
+    1 program: T_VOID MAIN LBRACKET RBRACKET statements .
+    3 statements: statements . statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    $default  reduce using rule 1 (program)
+
+    statement    转到状态 47
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 28
+
+    2 statements: statement .
+
+    $default  reduce using rule 2 (statements)
+
+
+State 29
+
+    5 statement: declaration . SEMICOLON
+
+    SEMICOLON  shift, and go to state 48
+
+
+State 30
+
+   20 declaration: expr .
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 20 (declaration)
+
+
+State 31
+
+   12 declaration: T . IDENTIFIER ASSIGN expr
+   13            | T . IDENTIFIER
+   14            | T . IDENTIFIER COMMA IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 66
+
+
+State 32
+
+   17 declaration: IDENTIFIER ASSIGN . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 67
+
+
+State 33
+
+    8 statement: WHILE LBRACKET . expr RBRACKET statement
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 68
+
+
+State 34
+
+   21 expr: IDENTIFIER .
+
+    $default  reduce using rule 21 (expr)
+
+
+State 35
+
+   18 declaration: RETURN expr .
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 18 (declaration)
+
+
+State 36
+
+    9 statement: IF LBRACKET . expr RBRACKET statement
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 69
+
+
+State 37
+
+   10 statement: ELSE LBRACKET . expr RBRACKET statement
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 70
+
+
+State 38
+
+   11 statement: FOR LBRACKET . declaration SEMICOLON declaration SEMICOLON declaration RBRACKET statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    RETURN      shift, and go to state 15
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    declaration  转到状态 71
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 39
+
+   15 declaration: SCANF LBRACKET . expr COMMA expr RBRACKET
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 72
+
+
+State 40
+
+   16 declaration: PRINTF LBRACKET . expr COMMA expr RBRACKET
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 73
+
+
+State 41
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   34     | ADD expr .
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 34 (expr)
+
+
+State 42
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   35     | SUB expr .
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 35 (expr)
+
+
+State 43
+
+    7 statement: LBRACE RBRACE .
+
+    $default  reduce using rule 7 (statement)
+
+
+State 44
+
+    3 statements: statements . statement
+    6 statement: LBRACE statements . RBRACE
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    RBRACE      shift, and go to state 74
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statement    转到状态 47
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 45
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   36     | NOT expr .
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 36 (expr)
+
+
+State 46
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   37     | SPACE expr .
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 37 (expr)
+
+
+State 47
+
+    3 statements: statements statement .
+
+    $default  reduce using rule 3 (statements)
+
+
+State 48
+
+    5 statement: declaration SEMICOLON .
+
+    $default  reduce using rule 5 (statement)
+
+
+State 49
+
+   42 expr: expr BIGGEROREQUAL . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 75
+
+
+State 50
+
+   41 expr: expr LESS . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 76
+
+
+State 51
+
+   43 expr: expr LESSOREQUAL . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 77
+
+
+State 52
+
+   44 expr: expr EQUAL . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 78
+
+
+State 53
+
+   45 expr: expr NOTEQUAL . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 79
+
+
+State 54
+
+   25 expr: expr ADD . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 80
+
+
+State 55
+
+   26 expr: expr SUB . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 81
+
+
+State 56
+
+   27 expr: expr MUL . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 82
+
+
+State 57
+
+   28 expr: expr DIV . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 83
+
+
+State 58
+
+   29 expr: expr MOD . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 84
+
+
+State 59
+
+   30 expr: expr ADDASS . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 85
+
+
+State 60
+
+   31 expr: expr SUBASS . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 86
+
+
+State 61
+
+   32 expr: expr MULASS . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 87
+
+
+State 62
+
+   33 expr: expr DIVASS . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 88
+
+
+State 63
+
+   38 expr: expr AND . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 89
+
+
+State 64
+
+   39 expr: expr OR . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 90
+
+
+State 65
+
+   40 expr: expr BIGGER . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 91
+
+
+State 66
+
+   12 declaration: T IDENTIFIER . ASSIGN expr
+   13            | T IDENTIFIER .
+   14            | T IDENTIFIER . COMMA IDENTIFIER
+
+    ASSIGN  shift, and go to state 92
+    COMMA   shift, and go to state 93
+
+    $default  reduce using rule 13 (declaration)
+
+
+State 67
+
+   17 declaration: IDENTIFIER ASSIGN expr .
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 17 (declaration)
+
+
+State 68
+
+    8 statement: WHILE LBRACKET expr . RBRACKET statement
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    RBRACKET       shift, and go to state 94
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 69
+
+    9 statement: IF LBRACKET expr . RBRACKET statement
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    RBRACKET       shift, and go to state 95
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 70
+
+   10 statement: ELSE LBRACKET expr . RBRACKET statement
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    RBRACKET       shift, and go to state 96
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 71
+
+   11 statement: FOR LBRACKET declaration . SEMICOLON declaration SEMICOLON declaration RBRACKET statement
+
+    SEMICOLON  shift, and go to state 97
+
+
+State 72
+
+   15 declaration: SCANF LBRACKET expr . COMMA expr RBRACKET
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    COMMA          shift, and go to state 98
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 73
+
+   16 declaration: PRINTF LBRACKET expr . COMMA expr RBRACKET
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    COMMA          shift, and go to state 99
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 74
+
+    6 statement: LBRACE statements RBRACE .
+
+    $default  reduce using rule 6 (statement)
+
+
+State 75
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   42     | expr BIGGEROREQUAL expr .
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 42 (expr)
+
+
+State 76
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   41     | expr LESS expr .
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 41 (expr)
+
+
+State 77
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   43     | expr LESSOREQUAL expr .
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 43 (expr)
+
+
+State 78
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   44     | expr EQUAL expr .
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 44 (expr)
+
+
+State 79
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+   45     | expr NOTEQUAL expr .
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 45 (expr)
+
+
+State 80
+
+   25 expr: expr . ADD expr
+   25     | expr ADD expr .
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 25 (expr)
+
+
+State 81
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   26     | expr SUB expr .
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 26 (expr)
+
+
+State 82
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   27     | expr MUL expr .
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 27 (expr)
+
+
+State 83
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   28     | expr DIV expr .
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 28 (expr)
+
+
+State 84
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   29     | expr MOD expr .
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 29 (expr)
+
+
+State 85
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   30     | expr ADDASS expr .
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 30 (expr)
+
+
+State 86
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   31     | expr SUBASS expr .
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 31 (expr)
+
+
+State 87
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   32     | expr MULASS expr .
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 32 (expr)
+
+
+State 88
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   33     | expr DIVASS expr .
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    $default  reduce using rule 33 (expr)
+
+
+State 89
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   38     | expr AND expr .
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+
+    $default  reduce using rule 38 (expr)
+
+
+State 90
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   39     | expr OR expr .
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+
+    $default  reduce using rule 39 (expr)
+
+
+State 91
+
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   40     | expr BIGGER expr .
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    ADDASS  shift, and go to state 59
+    SUBASS  shift, and go to state 60
+    MULASS  shift, and go to state 61
+    DIVASS  shift, and go to state 62
+    AND     shift, and go to state 63
+    OR      shift, and go to state 64
+
+    $default  reduce using rule 40 (expr)
+
+
+State 92
+
+   12 declaration: T IDENTIFIER ASSIGN . expr
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 100
+
+
+State 93
+
+   14 declaration: T IDENTIFIER COMMA . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 101
+
+
+State 94
+
+    8 statement: WHILE LBRACKET expr RBRACKET . statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statement    转到状态 102
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 95
+
+    9 statement: IF LBRACKET expr RBRACKET . statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statement    转到状态 103
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 96
+
+   10 statement: ELSE LBRACKET expr RBRACKET . statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statement    转到状态 104
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 97
+
+   11 statement: FOR LBRACKET declaration SEMICOLON . declaration SEMICOLON declaration RBRACKET statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    RETURN      shift, and go to state 15
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    declaration  转到状态 105
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 98
+
+   15 declaration: SCANF LBRACKET expr COMMA . expr RBRACKET
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 106
+
+
+State 99
+
+   16 declaration: PRINTF LBRACKET expr COMMA . expr RBRACKET
+
+    IDENTIFIER  shift, and go to state 34
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    expr  转到状态 107
+
+
+State 100
+
+   12 declaration: T IDENTIFIER ASSIGN expr .
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+    $default  reduce using rule 12 (declaration)
+
+
+State 101
+
+   14 declaration: T IDENTIFIER COMMA IDENTIFIER .
+
+    $default  reduce using rule 14 (declaration)
+
+
+State 102
+
+    8 statement: WHILE LBRACKET expr RBRACKET statement .
+
+    $default  reduce using rule 8 (statement)
+
+
+State 103
+
+    9 statement: IF LBRACKET expr RBRACKET statement .
+
+    $default  reduce using rule 9 (statement)
+
+
+State 104
+
+   10 statement: ELSE LBRACKET expr RBRACKET statement .
+
+    $default  reduce using rule 10 (statement)
+
+
+State 105
+
+   11 statement: FOR LBRACKET declaration SEMICOLON declaration . SEMICOLON declaration RBRACKET statement
+
+    SEMICOLON  shift, and go to state 108
+
+
+State 106
+
+   15 declaration: SCANF LBRACKET expr COMMA expr . RBRACKET
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    RBRACKET       shift, and go to state 109
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 107
+
+   16 declaration: PRINTF LBRACKET expr COMMA expr . RBRACKET
+   25 expr: expr . ADD expr
+   26     | expr . SUB expr
+   27     | expr . MUL expr
+   28     | expr . DIV expr
+   29     | expr . MOD expr
+   30     | expr . ADDASS expr
+   31     | expr . SUBASS expr
+   32     | expr . MULASS expr
+   33     | expr . DIVASS expr
+   38     | expr . AND expr
+   39     | expr . OR expr
+   40     | expr . BIGGER expr
+   41     | expr . LESS expr
+   42     | expr . BIGGEROREQUAL expr
+   43     | expr . LESSOREQUAL expr
+   44     | expr . EQUAL expr
+   45     | expr . NOTEQUAL expr
+
+    BIGGEROREQUAL  shift, and go to state 49
+    LESS           shift, and go to state 50
+    LESSOREQUAL    shift, and go to state 51
+    EQUAL          shift, and go to state 52
+    NOTEQUAL       shift, and go to state 53
+    ADD            shift, and go to state 54
+    SUB            shift, and go to state 55
+    MUL            shift, and go to state 56
+    DIV            shift, and go to state 57
+    MOD            shift, and go to state 58
+    ADDASS         shift, and go to state 59
+    SUBASS         shift, and go to state 60
+    MULASS         shift, and go to state 61
+    DIVASS         shift, and go to state 62
+    RBRACKET       shift, and go to state 110
+    AND            shift, and go to state 63
+    OR             shift, and go to state 64
+    BIGGER         shift, and go to state 65
+
+
+State 108
+
+   11 statement: FOR LBRACKET declaration SEMICOLON declaration SEMICOLON . declaration RBRACKET statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    RETURN      shift, and go to state 15
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    declaration  转到状态 111
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 109
+
+   15 declaration: SCANF LBRACKET expr COMMA expr RBRACKET .
+
+    $default  reduce using rule 15 (declaration)
+
+
+State 110
+
+   16 declaration: PRINTF LBRACKET expr COMMA expr RBRACKET .
+
+    $default  reduce using rule 16 (declaration)
+
+
+State 111
+
+   11 statement: FOR LBRACKET declaration SEMICOLON declaration SEMICOLON declaration . RBRACKET statement
+
+    RBRACKET  shift, and go to state 112
+
+
+State 112
+
+   11 statement: FOR LBRACKET declaration SEMICOLON declaration SEMICOLON declaration RBRACKET . statement
+
+    T_CHAR      shift, and go to state 7
+    T_INT       shift, and go to state 8
+    T_BOOL      shift, and go to state 9
+    IDENTIFIER  shift, and go to state 10
+    CHAR        shift, and go to state 11
+    STRING      shift, and go to state 12
+    INTEGER     shift, and go to state 13
+    WHILE       shift, and go to state 14
+    RETURN      shift, and go to state 15
+    IF          shift, and go to state 16
+    ELSE        shift, and go to state 17
+    FOR         shift, and go to state 18
+    SCANF       shift, and go to state 19
+    PRINTF      shift, and go to state 20
+    ADD         shift, and go to state 21
+    SUB         shift, and go to state 22
+    SEMICOLON   shift, and go to state 23
+    LBRACE      shift, and go to state 24
+    NOT         shift, and go to state 25
+    SPACE       shift, and go to state 26
+
+    statement    转到状态 113
+    declaration  转到状态 29
+    expr         转到状态 30
+    T            转到状态 31
+
+
+State 113
+
+   11 statement: FOR LBRACKET declaration SEMICOLON declaration SEMICOLON declaration RBRACKET statement .
+
+    $default  reduce using rule 11 (statement)
